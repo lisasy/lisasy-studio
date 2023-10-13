@@ -5,6 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
+  --secondary-rgb: 142, 142, 142;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -18,10 +19,17 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: 'GT-America-Standard-Regular', sans-serif;
+  background: #fff;
+}
+
+
+@font-face {
+  font-family: 'GT-America-Standard-Regular';
+  src: url('/assets/GT-America/GT-America-Standard-Regular.ttf');
+}
+
+a:hover {
+  color: #102de7;
+  text-decoration: underline;
 }
