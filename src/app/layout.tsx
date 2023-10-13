@@ -35,7 +35,6 @@ export default function RootLayout({
             <ul className="flex gap-0 justify-between md:justify-start md:gap-16 lg:gap-20">
                 <li><a href="https://www.instagram.com/lisasystudio/" target="_blank" rel="noreferrer">Instagram</a></li>
                 <li><a href="https://www.tiktok.com/@lisasystudio" target="_blank" rel="noreferrer">TikTok</a></li>
-                <li><a href="http://goldfish-elk-xt3m.squarespace.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
               </ul> 
             <div className="text-[#8E8E8E]">
               Los Angeles, CA
@@ -43,8 +42,8 @@ export default function RootLayout({
           </div>
           <div className="flex flex-col gap-4 md:gap-8 md:flex-row justify-between text-[#8E8E8E]">
             <div className="lg:w-1/2 text-xl">
-              <p className="w-3/5">
-              Featuring <a href="https://www.grillitype.com/typeface/gt-america" target="_blank" rel="noreferrer">GT America Standard</a> by Grilli Type
+              <p className="w-full lg:w-3/5">
+              Featuring <a href="https://www.grillitype.com/typeface/gt-america" class="underline" target="_blank" rel="noreferrer">GT America Standard</a> by Grilli Type
               <br />Built by Lisa Sy using Next.js and Vercel.
               </p>
             </div>
