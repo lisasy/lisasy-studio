@@ -24,7 +24,7 @@ export default function RootLayout({
             <ul className="flex gap-6 md:gap-12 justify-between md:justify-start ">
               <li><a href="https://www.instagram.com/lisasystudio/" target="_blank" rel="noreferrer">Instagram</a></li>
               <li><a href="https://www.tiktok.com/@lisasystudio" target="_blank" rel="noreferrer">TikTok</a></li>
-              <li><a href="https://www.tiktok.com/@lisasystudio" target="_blank" rel="noreferrer">hello@lisasy.com</a></li>
+              <li><a href="https://www.tiktok.com/@lisasystudio" target="_blank" rel="noreferrer">Email</a></li>
             </ul> 
           </div>
         </nav>
