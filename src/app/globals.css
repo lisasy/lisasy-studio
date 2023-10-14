@@ -4,9 +4,9 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --foreground: #ffffff;
+  --background-blue: #321AC6;
   --secondary-rgb: 142, 142, 142;
-  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,18 +18,18 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  font-family: 'GT-America-Standard-Regular', sans-serif;
-  background: #fff;
+  color: var(--foreground);
+  font-family: 'Editorial-New-Regular', sans-serif;
+  background: var(--background-blue);
 }
 
 
 @font-face {
-  font-family: 'GT-America-Standard-Regular';
-  src: url('/assets/GT-America/GT-America-Standard-Regular.ttf');
+  font-family: 'Editorial-New-Regular';
+  src: url('/assets/EditorialNew/PPEditorialNew-Regular.ttf');
 }
 
 a:hover {
-  color: #102de7;
+  color: var(--foreground);
   text-decoration: underline;
 }
