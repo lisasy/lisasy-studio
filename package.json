@@ -1,6 +1,6 @@
 {
   "name": "lisa-sy-studio",
-  "version": "0.1.0",
+  "version": "10.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
