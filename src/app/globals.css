@@ -6,7 +6,9 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --foreground: #ffffff;
-  --background-blue: #321AC6;
+  --background-color: #1e292d;
+  --accent-color: #51D696;
+  --accent-hover-color: #31F999;
   --secondary-rgb: 142, 142, 142;
 }
 
@@ -20,17 +22,26 @@
 
 body {
   color: var(--foreground);
-  font-family: 'Editorial-New-Regular', sans-serif;
-  background: var(--background-blue);
+  font-family: 'GT-America', sans-serif;
+  background: var(--background-color);
 }
 
 
 @font-face {
+  font-family: 'GT-America';
+  src: url('/assets/GT-America/GT-America-Standard-Regular.ttf');
+}
+
+/* @font-face {
   font-family: 'Editorial-New-Regular';
   src: url('/assets/EditorialNew/PPEditorialNew-Regular.ttf');
+} */
+
+a {
+  color: var(--accent-color);
 }
 
 a:hover {
-  color: var(--foreground);
+  color: var(--accent-hover-color);
   text-decoration: underline;
 }

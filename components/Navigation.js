@@ -11,8 +11,8 @@ function Navigation() {
   };
 
   return (
-    <nav className="z-40 text-4xl flex gap-4 justify-between fixed top-8 inset-x-5 md:inset-x-8 flex-col md:flex-row">
-      <div className="hidden md:flex justify-between w-full gap-6 md:gap-12 text-[#5B89FF]">
+    <nav className="z-40 flex gap-4 justify-between fixed top-8 inset-x-5 md:inset-x-8 flex-col md:flex-row  text-2xl lg:text-3xl 2xl:text-4xl">
+      <div className="hidden md:flex justify-between w-full gap-6 md:gap-12 text-[#51D696]">
         <ul className="flex gap-6 md:gap-12 justify-between w-auto md:justify-start ">
           {/* <li><a href="/about">About</a></li> */}
           <li><a href="https://naturalmatter.shop/" target="_blank" rel="noreferrer">Shop</a></li>
