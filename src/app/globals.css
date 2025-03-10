@@ -5,10 +5,10 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --foreground: #ffffff;
-  --background-color: #1e292d;
-  --accent-color: #51D696;
-  --accent-hover-color: #31F999;
+  --foreground: #131313;
+  --background-color: #EAE9E3;
+  --accent-color: #131313;
+  --accent-hover-color: #B7B12A;
   --secondary-rgb: 142, 142, 142;
 }
 
