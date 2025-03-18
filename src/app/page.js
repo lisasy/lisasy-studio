@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-left p-5 md:p-8 md:pb-20 w-full my-0 mx-auto">
       <article className="flex flex-col gap-12">
-          <div className="w-full sm:w-3/5 flex flex-col justify-center text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
+          <div className="w-full sm:w-3/5 xl:w-2/5 2xl:w-1/3 flex flex-col justify-center text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
             <h1 className="text-3xl md:text-4xl lg:text-5xl">
               Hi, I&apos;m Lisa.
             </h1>
