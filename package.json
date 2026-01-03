@@ -28,6 +28,9 @@
     "react-markdown": "^10.1.0",
     "tailwindcss": "^4.1.18"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "devDependencies": {
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
