@@ -31,7 +31,9 @@ export default function RootLayout({
         <Navigation />
         
         <main className="grow pt-16 p-6 md:p-8 md:ml-[16rem]">
-          {children}
+          <div className="w-full max-w-4xl mx-auto">
+            {children}
+          </div>
         </main>
       </body>
     </html>

@@ -100,13 +100,14 @@ a {
   }
 
   p {
-    @apply font-light text-base md:text-xl lg:text-2xl;
-    line-height: 1.33;
+    @apply font-light sm:font-normal text-base md:text-xl lg:text-2xl;
+    line-height: 1.45;
     margin-bottom: 1rem;
   }
 
   .smaller {
     @apply font-light text-base md:text-lg lg:text-xl;
+    line-height: 1.45;
   }
 }
 

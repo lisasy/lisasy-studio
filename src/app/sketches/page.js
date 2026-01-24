@@ -13,7 +13,7 @@ export default function Sketches() {
         {/* Image Grid - Masonry style layout */}
         <div className="columns-1 md:columns-2 gap-4 mt-5">
           {sketches.map((sketch) => (
-            <div key={sketch.id} className="break-inside-avoid mb-4">
+            <div key={sketch.slug} className="break-inside-avoid mb-4">
               <ItemLink
                 slug={sketch.slug}
                 basePath="/sketches"

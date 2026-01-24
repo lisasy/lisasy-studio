@@ -18,16 +18,62 @@ export function generateSlug(title) {
  */
 const workItemsData = [
   {
-    id: 1,
-    title: "Los Angeles, 2018 (watercolor on paper)",
-    slug: "los-angeles-2018",
-    publicId: "DTLA",
+    title: "Alabama Hills, 2020 (gouache on paper)",
+    slug: "alabama-hills-2020",
+    publicId: "Alabama-Hills_eldhbk",
     width: 800,
     height: 400,
     description: "Description of your work project."
   },
   {
-    id: 2,
+    title: "I-5 (2018) (graphite & colored pencils on paper)",
+    slug: "i-5-2018",
+    publicId: "I-5",
+    width: 800,
+    height: 600,
+    description: "Description of your work project."
+  },
+  {
+    title: "Alabama Hills 2, 2020 (gouache on paper)",
+    slug: "alabama-hills-2-2020",
+    publicId: "Alabama-Hills-2_fs5bhu",
+    width: 800,
+    height: 400,
+    description: "Description of your work project."
+  }, 
+  {
+    title: "Joshua Tree, 2020 (gouache on paper)",
+    slug: "joshua-tree-1-2018",
+    publicId: "Joshua-Tree-1_lv4ffu",
+    width: 800,
+    height: 400,
+    description: "Description of your work project."
+  },
+  {
+    title: "Sunset District, 2018 (watercolor on paper)",
+    slug: "sunset-district-2018",
+    publicId: "Sunset-District_beisxf",
+    width: 800,
+    height: 400,
+    description: "Description of your work project."
+  },
+  {
+    title: "Lyon 1, 2018 (watercolor on paper)",
+    slug: "lyon-1-2018",
+    publicId: "Lyon-3_ewisjr",
+    width: 800,
+    height: 400,
+    description: "Description of your work project."
+  },
+  {
+    title: "Lyon 2, 2018 (watercolor on paper)",
+    slug: "lyon-2-2018",
+    publicId: "Lyon-2_kbdseq",
+    width: 800,
+    height: 400,
+    description: "Description of your work project."
+  },
+  {
     title: "Valley (2018) (graphite & colored pencils on paper)",
     slug: "valley-2018",
     publicId: "Valley_California",
@@ -36,7 +82,6 @@ const workItemsData = [
     description: ""
   },
   {
-    id: 3,
     title: "Coyote Hill, 2018 (watercolor on paper)",
     slug: "coyote-hill-2018",
     publicId: "Coyote-Hill",
@@ -44,15 +89,7 @@ const workItemsData = [
     height: 600,
     description: ""
   },
-  {
-    id: 4,
-    title: "I-5 (2018) (graphite & colored pencils on paper)",
-    slug: "i-5-2018",
-    publicId: "I-5",
-    width: 800,
-    height: 600,
-    description: "Description of your work project."
-  },
+
 ];
 
 /**
@@ -60,7 +97,6 @@ const workItemsData = [
  */
 const sketchItemsData = [
   {
-    id: 1,
     title: "Alabama Hills",
     slug: "alabama-hills",
     publicId: "AlabamaHills",
@@ -68,7 +104,6 @@ const sketchItemsData = [
     height: 800,
   },
   {
-    id: 2,
     title: "Cars",
     slug: "cars",
     publicId: "Cars",
@@ -76,7 +111,6 @@ const sketchItemsData = [
     height: 800,
   },
   {
-    id: 3,
     title: "San Pedro",
     slug: "san-pedro",
     publicId: "San-Pedro",
@@ -84,7 +118,6 @@ const sketchItemsData = [
     height: 600,
   },
   {
-    id: 4,
     title: "Birds",
     slug: "birds",
     publicId: "Birds",
@@ -92,7 +125,6 @@ const sketchItemsData = [
     height: 800,
   },
   {
-    id: 5,
     title: "Debs",
     slug: "debs",
     publicId: "Debs",
@@ -100,7 +132,6 @@ const sketchItemsData = [
     height: 800,
   },
   {
-    id: 6,
     title: "Lake Merritt",
     slug: "lake-merritt",
     publicId: "Lake-Merritt",

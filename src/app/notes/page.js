@@ -23,16 +23,17 @@ export default function Notes() {
   };
 
   return (
-    <article className="w-full md:w-3/5">
+    <article>
       <div className="text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
 
         {/* Blog Posts List */}
         <div className="space-y-16 md:space-y-20">
+        <h3 className="mb-5">Notes</h3>
           {posts.map((post) => (
             <article key={post.id} className="space-y-6">
               {/* Post Header */}
               <header>
-                <h3 className="">{post.title}</h3>
+                <h4 className="">{post.title}</h4>
                 <time className="text-base md:text-lg lg:text-xl text-gray-600" dateTime={formatDateForDateTime(post.date)}>
                   {post.date}
                 </time>
@@ -53,7 +54,7 @@ export default function Notes() {
               )}
 
               {/* Post Content */}
-              <div className="space-y-6">
+              <div className="space-y-6 w-full xl:w-3/4">
                 <ReactMarkdown
                   components={{
                     p: ({node, ...props}) => <p className="smaller" {...props} />
