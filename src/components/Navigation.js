@@ -10,8 +10,8 @@ function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Don't render navigation on item pages (work/[slug] and sketches/[slug])
-  if (pathname?.match(/^\/(work|sketches)\/[^/]+$/)) {
+  // Don't render navigation on item detail pages
+  if (pathname?.match(/^\/(work|sketches|studio-art)\/[^/]+$/)) {
     return null;
   }
 
@@ -29,10 +29,11 @@ function Navigation() {
   };
 
   const navItems = [
-    { name: "Work", href: "/work" },
-    { name: "Sketches", href: "/sketches" },
-    { name: "About", href: "/about" },
+    { name: "Home", href: "/" },
+    { name: "Product / Software", href: "/product" },
+    { name: "Studio Art", href: "/studio-art" },
     { name: "Notes", href: "/notes" },
+    { name: "About", href: "/about" },
   ]
 
   const isActive = (href) => {
@@ -53,7 +54,7 @@ function Navigation() {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         <h3 className="text-center">
-          <Link href="/work" className="transition-colors">
+          <Link href="/" className="transition-colors">
             Lisa Sy
           </Link>
         </h3>
@@ -78,7 +79,7 @@ function Navigation() {
       >
         <div className="flex flex-col gap-3 text-base md:text-lg px-3 md:pl-6 md:pr-0">
           <h3 className="hidden md:block">
-            <Link href="/work" className="px-4 hover:bg-transparent hover:text-accent-hover">
+            <Link href="/" className="px-4 hover:bg-transparent hover:text-accent-hover">
               Lisa Sy
             </Link>
           </h3>

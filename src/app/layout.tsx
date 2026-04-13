@@ -5,18 +5,18 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Lisa Sy',
-  description: 'Artist and illustrator based in Southern California',
-  keywords: ['art', 'illustration', 'plein air', 'painting'],
+  description: 'Product designer and artist based in Los Angeles, CA',
+  keywords: ['product design', 'software design', 'art', 'illustration', 'plein air', 'painting'],
   authors: [{ name: 'Lisa Sy' }],
   openGraph: {
     title: 'Lisa Sy',
-    description: 'Artist and illustrator based in Southern California',
+    description: 'Product designer and artist based in Los Angeles, CA',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lisa Sy',
-    description: 'Artist and illustrator based in Southern California',
+    description: 'Product designer and artist based in Los Angeles, CA',
   },
 };
 
