@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import { NAV_WIDTH, CONTENT_PADDING, MOBILE_HEADER_HEIGHT } from '@/lib/constants';
+import { NAV_WIDTH, MOBILE_HEADER_HEIGHT } from '@/lib/constants';
 
 function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ function Navigation() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Product / Software", href: "/product" },
+    { name: "Product Design", href: "/product-design" },
     { name: "Studio Art", href: "/studio-art" },
     { name: "Notes", href: "/notes" },
     { name: "About", href: "/about" },
@@ -77,7 +77,7 @@ function Navigation() {
         }`}
         style={{ width: NAV_WIDTH }}
       >
-        <div className="flex flex-col gap-3 text-base md:text-lg px-3 md:pl-6 md:pr-0">
+        <div className="flex flex-col gap-3 text-base font-normal px-3 md:pl-6 md:pr-0">
           <h3 className="hidden md:block">
             <Link href="/" className="px-4 hover:bg-transparent hover:text-accent-hover">
               Lisa Sy
@@ -100,8 +100,8 @@ function Navigation() {
                   <Link
                     href={item.href}
                     onClick={handleLinkClick}
-                    className="py-2 px-4 rounded-lg w-full block hover:bg-background-secondary hover:text-accent-hover transition-colors"
-                    style={active ? { backgroundColor: '#dfddd2', fontWeight: '400' } : {}}
+                    className="py-1 px-4 rounded-lg w-full block hover:bg-background-secondary hover:text-accent-hover transition-colors"
+                    style={active ? { backgroundColor: '#dfddd2' } : {}}
                   >
                     {item.name}
                   </Link>

@@ -1,6 +1,5 @@
 import './globals.css'
 import Navigation from '@/components/Navigation'
-import { NAV_WIDTH, CONTENT_PADDING, MOBILE_HEADER_HEIGHT } from '@/lib/constants';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -30,8 +29,8 @@ export default function RootLayout({
       <body className="flex min-h-screen">
         <Navigation />
         
-        <main className="grow pt-16 p-6 md:p-8 md:ml-[16rem]">
-          <div className="w-full max-w-4xl mx-auto">
+        <main className="grow pt-16 p-6 md:p-8 md:ml-[var(--layout-main-ml)]">
+          <div className="w-full max-w-4xl mx-auto md:-translate-x-10">
             {children}
           </div>
         </main>

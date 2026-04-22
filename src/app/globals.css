@@ -21,6 +21,11 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --secondary-rgb: 142, 142, 142;
+
+  --layout-nav-width: 14rem;
+  --layout-notes-sidebar-width: 17rem;
+  --layout-main-ml: 16rem;
+  --layout-notes-content-ml: 31rem;  /* nav + notes sidebar */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +39,7 @@
 body {
   color: var(--color-foreground);
   font-family: var(--font-family-gt-america);
+  font-weight: 300;
   background: var(--color-background);
 }
 
@@ -58,10 +64,6 @@ body {
   font-style: normal;
 }
 
-/* @font-face {
-  font-family: 'Editorial-New-Regular';
-  src: url('/assets/EditorialNew/PPEditorialNew-Regular.ttf');
-} */
 
 a {
   color: var(--color-accent);
@@ -70,32 +72,32 @@ a {
 /* Typography - Global heading and paragraph styles */
 @layer base {
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-3xl md:text-4xl lg:text-5xl font-normal;
     line-height: 1.33;
   }
 
   h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-2xl md:text-3xl lg:text-4xl font-normal;
     line-height: 1.33;
   }
 
   h3 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply text-xl md:text-2xl lg:text-3xl font-normal;
     line-height: 1.33;
   }
 
   h4 {
-    @apply text-lg md:text-xl lg:text-2xl;
+    @apply text-lg md:text-xl lg:text-2xl font-normal;
     line-height: 1.33;
   }
 
   h5 {
-    @apply text-base md:text-lg lg:text-xl;
+    @apply text-base md:text-lg lg:text-xl font-normal;
     line-height: 1.33;
   }
 
   h6 {
-    @apply text-sm md:text-base lg:text-lg;
+    @apply text-sm md:text-base lg:text-lg font-normal;
     line-height: 1.33;
   }
 

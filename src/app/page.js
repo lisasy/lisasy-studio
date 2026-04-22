@@ -2,11 +2,32 @@ import React from 'react';
 import Link from 'next/link';
 
 const sections = [
-  { name: "Product / Software", href: "/product" },
+  { name: "Product / Software", href: "/product-design" },
   { name: "Studio Art", href: "/studio-art" },
   { name: "Notes", href: "/notes" },
   { name: "About Me", href: "/about" },
 ];
+
+const PRODUCT_THUMBS = [
+  '/images/product/coinbase.png',
+  '/images/product/instagram.png',
+  '/images/product/meta.svg',
+];
+
+function ProductDesignCardMedia() {
+  return (
+    <div className="aspect-[4/3] bg-background-secondary flex items-center justify-center gap-3 sm:gap-4 px-4">
+      {PRODUCT_THUMBS.map((src) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          className="h-[72px] w-[72px] sm:h-20 sm:w-20 object-contain shrink-0"
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -25,9 +46,13 @@ export default function Home() {
             <Link
               key={section.href}
               href={section.href}
-              className="group block rounded-lg border border-foreground/10 bg-background-secondary/50 overflow-hidden transition-colors hover:bg-background-secondary"
+              className="group block rounded-lg bg-background-secondary/50 overflow-hidden transition-colors hover:bg-background-secondary"
             >
-              <div className="aspect-[4/3] bg-background-secondary" />
+              {section.href === '/product-design' ? (
+                <ProductDesignCardMedia />
+              ) : (
+                <div className="aspect-[4/3] bg-background-secondary" />
+              )}
               <div className="px-4 py-3">
                 <span className="text-base md:text-lg font-normal">{section.name}</span>
               </div>

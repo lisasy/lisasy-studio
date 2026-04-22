@@ -14,6 +14,8 @@ const productGroups = [
   {
     year: "2025-26",
     company: "Coinbase",
+    companyDetail: "Coinbase · Staff Product Designer (IC6) on Foundations & Onchain",
+    thumbnail: "/images/product/coinbase.png",
     projects: [
       { name: "Prime Onchain Wallet", tag: "work", slug: "prime-onchain-wallet" },
       { name: "Coinbase Research & AI Tooling", tag: "work", slug: "coinbase-research-ai-tooling" },
@@ -22,6 +24,8 @@ const productGroups = [
   {
     year: "2023-25",
     company: "Instagram",
+    companyDetail: "Instagram · Staff Product Designer (IC6) on Creators Team",
+    thumbnail: "/images/product/instagram.png",
     projects: [
       { name: "Creator Bonuses", tag: "work", slug: "creator-bonuses" },
       { name: "Creator Fandom", tag: "work", slug: "creator-fandom" },
@@ -32,6 +36,9 @@ const productGroups = [
   {
     year: "2021-22",
     company: "Meta: New Product Experimentation",
+    companyDetail: "Meta · Staff Product Designer (IC6) on New Product Experimentation",
+    thumbnail: "/images/product/meta.svg",
+    thumbnailOnWhite: true,
     projects: [
       { name: "Actus", tag: "work", slug: "actus" },
     ]
