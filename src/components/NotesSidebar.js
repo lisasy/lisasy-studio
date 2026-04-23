@@ -37,15 +37,15 @@ export default function NotesSidebar({ notes, activeId }) {
     <aside className="hidden md:block fixed top-0 bottom-0 overflow-y-auto py-8 pr-4 pl-2 border-r border-foreground/5"
       style={{ left: NAV_WIDTH, width: NOTES_SIDEBAR_WIDTH }}
     >
-      <h6 className="px-3 mb-3 text-text-secondary">Notes</h6>
+      <h3 className="mb-3">Notes</h3>
       <nav className="flex flex-col gap-0.5">
         {notes.map((note) => (
           <a
             key={note.id}
             href={`#${note.id}`}
             onClick={(e) => handleClick(e, note.id)}
-            className={`block px-3 py-1.5 rounded-[10px] transition-colors cursor-pointer hover:bg-black/[0.03] ${
-              activeId === note.id ? 'bg-black/[0.06]' : ''
+            className={`block px-3 py-1.5 rounded-[10px] transition-colors cursor-pointer hover:bg-background-secondary-hover ${
+              activeId === note.id ? 'bg-background-secondary' : ''
             }`}
           >
             <span className="text-base font-normal leading-[1.3] line-clamp-1 block">{note.title}</span>

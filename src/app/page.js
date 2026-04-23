@@ -19,13 +19,13 @@ function ProductDesignCardMedia() {
 
   return (
     <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-center justify-center">
-      <div className="grid grid-cols-2 gap-4 p-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 p-4 lg:p-6">
         {icons.map((src) => (
           <img
             key={src}
             src={src}
             alt=""
-            className="h-20 w-20 object-contain"
+            className="h-14 w-14 lg:h-20 lg:w-20 object-contain"
           />
         ))}
       </div>
@@ -70,10 +70,10 @@ function NotesCardMedia() {
   })();
 
   return (
-    <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-start p-8">
-      <div className="home-notes-stack">
+    <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-start p-5 lg:p-8">
+      <div className="home-notes-stack flex min-h-0 w-full flex-col">
         {formattedDate ? <div className="home-notes-date">{formattedDate}</div> : null}
-        <div className="home-notes-preview text-2xl">
+        <div className="home-notes-preview text-lg lg:text-2xl">
           <span className="home-blink-cursor" aria-hidden="true" />
           {preview}
         </div>
@@ -84,11 +84,11 @@ function NotesCardMedia() {
 
 function StudioArtCardMedia() {
   return (
-    <div className="home-card-media aspect-[4/3] bg-background-secondary p-5 flex items-center justify-center">
+    <div className="home-card-media aspect-[4/3] bg-background-secondary p-4 lg:p-5 flex items-center justify-center">
       <img
         src="/images/home/studio-art.png"
         alt=""
-        className="w-5/6 h-auto object-cover rounded-[12px]"
+        className="w-11/12 lg:w-5/6 h-auto object-cover rounded-[12px]"
       />
     </div>
   );
@@ -96,11 +96,11 @@ function StudioArtCardMedia() {
 
 function AboutCardMedia() {
   return (
-    <div className="home-card-media aspect-[4/3] bg-background-secondary p-5 flex items-center justify-center">
+    <div className="home-card-media aspect-[4/3] bg-background-secondary p-4 lg:p-5 flex items-center justify-center">
       <img
         src="/images/home/about.png"
         alt=""
-        className="size-56 object-cover rounded-full"
+        className="size-32 md:size-44 lg:size-64 object-cover rounded-full"
       />
     </div>
   );
@@ -110,15 +110,15 @@ export default function Home() {
   return (
     <article>
       <div className="text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
-        <p>
+        <h3>
           Hello, I&apos;m Lisa and I&apos;m a multi-disciplinary product &amp; software designer,
           artist, and illustrator based in Los Angeles, CA. Here is my place on the
           internet where I share my product/software work across 14 years
           working in tech, my studio art practice, and my curious notes about
           design, art, creativity, exploration, and nurturing a well-lived life.
-        </p>
+        </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-8">
           {sections.map((section) => {
             const tooltip =
               section.href === '/product-design'

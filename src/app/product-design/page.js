@@ -44,7 +44,7 @@ function Thumbnail({ src, size = "sm", onWhite = false }) {
 function ListItem({ text, hoverText, type = "title", showThumbnail = true, thumbnail, thumbnailOnWhite }) {
   const isProject = type === "project";
   return (
-    <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-black/[0.03] cursor-pointer">
+    <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-background-hover cursor-pointer">
       <span className={`flex-1 text-lg font-normal leading-[1.2] ${isProject ? "opacity-60" : ""}`}>
         {hoverText ? (
           <>
@@ -69,7 +69,7 @@ export default function ProductSoftware() {
     <article>
       <div className="flex flex-col">
         <h3>Product Design</h3>
-        <p className="smaller my-5">
+        <p className="smaller mt-5 mb-12">
           Experienced and entrepreneurial product designer with over 14 years of
           designing at-scale at Facebook, Instagram, Coinbase, Dropbox, startups,
           and agencies. My experience spans consumer-facing and B2B monetization
@@ -91,7 +91,7 @@ export default function ProductSoftware() {
                   className={`flex items-center justify-center h-8 px-3 py-1 rounded-[10px] text-base font-normal leading-[1.2] transition-colors cursor-pointer ${
                     activeTab === tab.key
                       ? "bg-foreground text-background"
-                      : "bg-black/[0.06] text-foreground hover:bg-black/[0.1]"
+                      : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
                   }`}
                 >
                   {tab.label}
@@ -108,7 +108,7 @@ export default function ProductSoftware() {
                   className={`flex items-center justify-center h-8 px-3 py-1 rounded-[10px] transition-colors cursor-pointer ${
                     viewMode === "list"
                       ? "bg-foreground text-background"
-                      : "bg-black/[0.06] text-foreground hover:bg-black/[0.1]"
+                      : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
                   }`}
                   aria-label="List view"
                 >
@@ -119,7 +119,7 @@ export default function ProductSoftware() {
                   className={`flex items-center justify-center h-8 px-3 py-1 rounded-[10px] transition-colors cursor-pointer ${
                     viewMode === "grid"
                       ? "bg-foreground text-background"
-                      : "bg-black/[0.06] text-foreground hover:bg-black/[0.1]"
+                      : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
                   }`}
                   aria-label="Grid view"
                 >

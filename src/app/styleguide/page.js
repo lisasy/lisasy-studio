@@ -33,7 +33,7 @@ function SpecRow({ label, value, description }) {
   return (
     <div className="flex items-baseline gap-4 py-2 border-b border-foreground/5 last:border-0">
       <span className="text-sm font-normal w-48 shrink-0">{label}</span>
-      <code className="text-xs bg-black/[0.06] px-2 py-0.5 rounded font-mono shrink-0">{value}</code>
+      <code className="text-xs bg-background-secondary px-2 py-0.5 rounded font-mono shrink-0">{value}</code>
       {description && <span className="text-xs text-text-secondary">{description}</span>}
     </div>
   );
@@ -137,9 +137,9 @@ export default function Styleguide() {
           <div>
             <span className="text-sm font-normal text-text-secondary mb-3 block">Opacity Surfaces</span>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <OpacitySwatch label="Control Inactive" className="bg-black/[0.06]" token="bg-black/[0.06]" />
-              <OpacitySwatch label="Control Hover" className="bg-black/[0.1]" token="hover:bg-black/[0.1]" />
-              <OpacitySwatch label="List Hover" className="bg-black/[0.03]" token="hover:bg-black/[0.03]" />
+              <OpacitySwatch label="Control Inactive" className="bg-background-secondary" token="bg-background-secondary" />
+              <OpacitySwatch label="Control Hover" className="bg-background-secondary-hover" token="hover:bg-background-secondary-hover" />
+              <OpacitySwatch label="List Hover" className="bg-background-hover" token="hover:bg-background-hover" />
               <OpacitySwatch label="Divider" className="bg-foreground/10" token="bg-foreground/10" />
               <OpacitySwatch label="Thumbnail" className="bg-[#d9d9d9]" token="bg-[#d9d9d9]" />
             </div>
@@ -185,7 +185,7 @@ export default function Styleguide() {
           <h4>Border Radius</h4>
           <div className="flex gap-6 items-end">
             <div className="flex flex-col items-center gap-2">
-              <div className="size-16 bg-black/[0.06] rounded-[10px]" />
+              <div className="size-16 bg-background-secondary rounded-[10px]" />
               <span className="text-xs text-text-secondary">10px</span>
               <span className="text-xs text-text-secondary">Controls, hovers</span>
             </div>
@@ -195,7 +195,7 @@ export default function Styleguide() {
               <span className="text-xs text-text-secondary">Thumbnails</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <div className="size-16 bg-black/[0.06] rounded-lg" />
+              <div className="size-16 bg-background-secondary rounded-lg" />
               <span className="text-xs text-text-secondary">8px (lg)</span>
               <span className="text-xs text-text-secondary">Nav links</span>
             </div>
@@ -217,14 +217,14 @@ export default function Styleguide() {
                   className={`flex items-center justify-center h-8 px-4 py-1 rounded-[10px] text-base font-normal leading-[1.2] transition-colors cursor-pointer ${
                     demoTab === label.toLowerCase()
                       ? "bg-foreground text-background"
-                      : "bg-black/[0.06] text-foreground hover:bg-black/[0.1]"
+                      : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
                   }`}
                 >
                   {label}
                 </button>
               ))}
             </div>
-            <span className="text-xs text-text-secondary">text-base font-normal · h-8 px-4 py-1 rounded-[10px] (32px) · Active: bg-foreground text-background · Inactive: bg-black/[0.06]</span>
+            <span className="text-xs text-text-secondary">text-base font-normal · h-8 px-4 py-1 rounded-[10px] (32px) · Active: bg-foreground text-background · Inactive: bg-background-secondary</span>
           </div>
 
           {/* View Toggle */}
@@ -236,7 +236,7 @@ export default function Styleguide() {
                 className={`flex items-center justify-center h-8 px-4 py-1 rounded-[10px] transition-colors cursor-pointer ${
                   demoView === "list"
                     ? "bg-foreground text-background"
-                    : "bg-black/[0.06] text-foreground hover:bg-black/[0.1]"
+                    : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
                 }`}
               >
                 <List size={16} />
@@ -246,7 +246,7 @@ export default function Styleguide() {
                 className={`flex items-center justify-center h-8 px-4 py-1 rounded-[10px] transition-colors cursor-pointer ${
                   demoView === "grid"
                     ? "bg-foreground text-background"
-                    : "bg-black/[0.06] text-foreground hover:bg-black/[0.1]"
+                    : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
                 }`}
               >
                 <LayoutGrid size={16} />
@@ -259,19 +259,19 @@ export default function Styleguide() {
           <div className="flex flex-col gap-3">
             <span className="text-sm font-normal">List Item</span>
             <div className="flex flex-col max-w-xl">
-              <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-black/[0.03] cursor-pointer">
+              <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-background-hover cursor-pointer">
                 <span className="flex-1 text-lg font-normal leading-[1.2]">
                   <span className="group-hover:hidden">Company Title</span>
                   <span className="hidden group-hover:inline">Company · Role detail on hover</span>
                 </span>
                 <div className="size-10 rounded-[9px] bg-[#d9d9d9] flex-shrink-0" />
               </div>
-              <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-black/[0.03] cursor-pointer">
+              <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-background-hover cursor-pointer">
                 <span className="flex-1 text-lg font-normal leading-[1.2] opacity-60">Project Name</span>
                 <div className="size-10 rounded-[9px] bg-[#d9d9d9] flex-shrink-0" />
               </div>
             </div>
-            <span className="text-xs text-text-secondary">h-12 px-6 py-3 · Title: full opacity · Project: opacity-60 · Hover: bg-black/[0.03] rounded-[10px]</span>
+            <span className="text-xs text-text-secondary">h-12 px-6 py-3 · Title: full opacity · Project: opacity-60 · Hover: bg-background-hover rounded-[10px]</span>
           </div>
 
           {/* Thumbnail */}
@@ -319,8 +319,8 @@ export default function Styleguide() {
         <section className="flex flex-col gap-6">
           <h4>Interactive Patterns</h4>
           <div className="flex flex-col">
-            <SpecRow label="Control hover" value="hover:bg-black/[0.1]" description="Tabs, view toggles" />
-            <SpecRow label="List hover" value="hover:bg-black/[0.03]" description="List rows (subtler)" />
+            <SpecRow label="Control hover" value="hover:bg-background-secondary-hover" description="Tabs, view toggles" />
+            <SpecRow label="List hover" value="hover:bg-background-secondary-hover" description="List rows" />
             <SpecRow label="Nav hover" value="hover:bg-background-secondary" description="Sidebar links" />
             <SpecRow label="Active control" value="bg-foreground text-background" description="Selected tab/toggle" />
             <SpecRow label="Active nav" value="bg-background-secondary" description="Current page" />
@@ -331,7 +331,7 @@ export default function Styleguide() {
 
         <div className="h-px bg-foreground/10" />
         <p className="text-xs text-text-secondary">
-          Reference doc: <code className="bg-black/[0.06] px-1.5 py-0.5 rounded font-mono">src/data/styleguide.md</code>
+          Reference doc: <code className="bg-background-secondary px-1.5 py-0.5 rounded font-mono">src/data/styleguide.md</code>
         </p>
       </div>
     </article>

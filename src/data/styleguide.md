@@ -49,6 +49,8 @@ All headings use `line-height: 1.33`.
 | `--color-foreground` | `#131313` | `text-foreground`, `bg-foreground` | Primary text, active controls |
 | `--color-background` | `#EAE9E3` | `bg-background` | Page background |
 | `--color-background-secondary` | `#dfddd2` | `bg-background-secondary` | Nav active state, card fill |
+| `--color-background-secondary-hover` | `#d6d4c8` | `bg-background-secondary-hover` | Hover surface for secondary fills |
+| `--color-background-hover` | `#e5e3d9` | `bg-background-hover` | Subtle hover surface on secondary background (lists) |
 | `--color-accent` | `#131313` | `text-accent` | Links |
 | `--color-accent-hover` | `#B7B12A` | `text-accent-hover` | Link hover |
 | `--color-text-secondary` | `#757367` | `text-text-secondary` | Muted text, captions |
@@ -56,9 +58,8 @@ All headings use `line-height: 1.33`.
 ### Opacity-Based Surface Colors
 | Pattern | Usage |
 |---------|-------|
-| `bg-black/[0.06]` | Inactive segmented controls, inactive view toggles |
-| `hover:bg-black/[0.1]` | Segmented control hover |
-| `hover:bg-black/[0.03]` | List item hover |
+| `bg-background-secondary` | Inactive segmented controls, inactive view toggles, subtle fills |
+| `hover:bg-background-secondary-hover` | Hover surface for secondary fills (lists, controls) |
 | `bg-[#d9d9d9]` | Thumbnail placeholder |
 | `bg-foreground/10` | Dividers |
 
@@ -121,8 +122,8 @@ All headings use `line-height: 1.33`.
 - Pill-shaped buttons: `h-8 px-4 py-1 rounded-[10px]` (32px height)
 - Font: `text-base font-normal` (16px, Regular 400)
 - Active: `bg-foreground text-background` (black fill, white text)
-- Inactive: `bg-black/[0.06] text-foreground`
-- Hover (inactive): `hover:bg-black/[0.1]`
+- Inactive: `bg-background-secondary text-foreground`
+- Hover (inactive): `hover:bg-background-secondary-hover`
 - Always: `cursor-pointer`
 
 ### View Toggle (list/grid on `/product-design`)
@@ -136,7 +137,7 @@ All headings use `line-height: 1.33`.
 - Font: `text-lg font-normal` (18px, Regular 400)
 - Title type: full opacity
 - Project type: `opacity-60`
-- Hover: `hover:bg-black/[0.03] rounded-[10px]`
+- Hover: `hover:bg-background-secondary-hover rounded-[10px]`
 - Company titles support `hoverText` — text swaps on hover to show expanded role (e.g., "Instagram" → "Instagram · Staff Product Designer (IC6) on Creators Team")
 - Always: `cursor-pointer`
 
@@ -163,8 +164,8 @@ All headings use `line-height: 1.33`.
 
 | Pattern | Classes | Usage |
 |---------|---------|-------|
-| Hover fill (controls) | `hover:bg-black/[0.1]` | Tabs, view toggles |
-| Hover fill (list) | `hover:bg-black/[0.03]` | List rows |
+| Hover fill (controls) | `hover:bg-background-secondary-hover` | Tabs, view toggles |
+| Hover fill (list) | `hover:bg-background-hover` | List rows |
 | Hover fill (nav) | `hover:bg-background-secondary` | Sidebar links |
 | Active fill (controls) | `bg-foreground text-background` | Selected tab/toggle |
 | Active fill (nav) | `bg-background-secondary` | Current page link |

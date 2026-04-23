@@ -8,7 +8,10 @@ export default function StudioArt() {
   return (
     <article>
       <div className="text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-3">
-        <h3>Selected Works</h3>
+        <h3>Studio Art</h3>
+        <p className="smaller mt-5 mb-12">
+          I'm an artist, painter, illustrator, and writer based in Los Angeles, CA. My work is inspired by the natural world and our relationship to it. Working in plein air, I often paint and draw natural and built urban landscapes, ranging from desert and mountainscapes, to bustling city plazas replete with people. Through my art, I strive to capture and amplify the beauty of these often overlooked and under-appreciated moments by pointing attention to them. I hope my art invites you to pause, reflect, and find wonder in the seemingly ordinary.
+        </p>
 
         <div className="grid grid-cols-1 gap-8 mt-5">
           {workItems.map((item) => (

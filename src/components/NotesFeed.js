@@ -64,11 +64,10 @@ export default function NotesFeed({ posts }) {
         <article>
           <div className="max-w-3xl text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
             <div className="space-y-16 md:space-y-20">
-              <h3 className="mb-5">Notes</h3>
               {posts.map((post, i) => (
                 <article key={post.id} id={post.id} className="space-y-6 scroll-mt-8">
                   <header>
-                    <h4>{post.title}</h4>
+                    <h3>{post.title}</h3>
                     <time className="text-base text-text-secondary" dateTime={formatDateForDateTime(post.date)}>
                       {formatDate(post.date)}
                     </time>
