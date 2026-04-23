@@ -119,3 +119,152 @@ body.item-page main {
   margin: 0;
   margin-left: 0 !important;
 }
+
+/* Home — card interactions (tooltip + press) */
+.home-card-wrap {
+  position: relative;
+  display: block;
+  overflow: visible;
+}
+
+.home-card {
+  position: relative;
+  outline: none;
+}
+
+.home-card-wrap::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: var(--tt-y, 14px);
+  left: var(--tt-x, 14px);
+  z-index: 2;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--color-foreground) 78%, transparent);
+  background: color-mix(in srgb, var(--color-background) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translate(-50%, calc(-100% - 14px));
+  transition:
+    opacity 160ms cubic-bezier(0.33, 1, 0.68, 1),
+    transform 200ms cubic-bezier(0.33, 1, 0.68, 1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.home-card-wrap:hover::after,
+.home-card-wrap:focus-within::after {
+  opacity: 1;
+  transform: translate(-50%, calc(-100% - 14px));
+}
+
+.home-card .home-card-media {
+  transition: transform 140ms cubic-bezier(0.33, 1, 0.68, 1);
+  transform-origin: center;
+}
+
+.home-card:active .home-card-media {
+  transform: scale(0.95);
+}
+
+/* Home — card media (Figma: grayscale/luminosity feel + reduced opacity; hover = full color) */
+.home-card-media img {
+  opacity: 0.58;
+  filter: grayscale(1) saturate(0) contrast(0.92) brightness(1.05);
+  transition:
+    opacity 160ms cubic-bezier(0.33, 1, 0.68, 1),
+    filter 200ms cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: filter, opacity;
+}
+
+.group:hover .home-card-media img {
+  opacity: 1;
+  filter: grayscale(0) saturate(1) contrast(1) brightness(1);
+}
+
+/* Home — Product Design card: “wave” shimmer across logos */
+.home-card--product:hover .home-card-media img {
+  animation: homeLogoWave 900ms cubic-bezier(0.33, 1, 0.68, 1) 1 both;
+}
+
+.home-card--product:hover .home-card-media img:nth-child(1) {
+  animation-delay: 0ms;
+}
+.home-card--product:hover .home-card-media img:nth-child(2) {
+  animation-delay: 120ms;
+}
+.home-card--product:hover .home-card-media img:nth-child(3) {
+  animation-delay: 240ms;
+}
+.home-card--product:hover .home-card-media img:nth-child(4) {
+  animation-delay: 360ms;
+}
+
+@keyframes homeLogoWave {
+  0% {
+    opacity: 0.62;
+    filter: grayscale(1) saturate(0) contrast(0.92) brightness(1.05);
+  }
+  45% {
+    opacity: 1;
+    filter: grayscale(0) saturate(1) contrast(1.02) brightness(1.08);
+  }
+  100% {
+    opacity: 1;
+    filter: grayscale(0) saturate(1) contrast(1) brightness(1);
+  }
+}
+
+/* Home — icon tiles: keep tile bg constant on hover */
+.home-icon-tile img {
+  opacity: inherit;
+}
+
+/* Home — Notes card preview */
+.home-notes-stack {
+  width: 100%;
+}
+
+.home-notes-date {
+  font-size: 1.15rem;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--color-foreground) 45%, transparent);
+  margin-bottom: 1rem;
+}
+
+.home-notes-preview {
+  position: relative;
+  width: 100%;
+  line-height: 1.33;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+}
+
+.home-blink-cursor {
+  display: inline-block;
+  width: 5px;
+  height: 1em;
+  margin-left: 0;
+  background: var(--color-text-secondary);
+  vertical-align: -0.12em;
+  animation: homeCursorBlink 1s steps(1) infinite;
+}
+
+@keyframes homeCursorBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}

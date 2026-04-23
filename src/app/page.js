@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
+import { getAllNotes } from '@/lib/notes';
+import HomeCardLink from '@/components/HomeCardLink';
 
 const sections = [
   { name: "Product / Software", href: "/product-design" },
@@ -8,23 +9,99 @@ const sections = [
   { name: "About Me", href: "/about" },
 ];
 
-const PRODUCT_THUMBS = [
-  '/images/product/coinbase.png',
-  '/images/product/instagram.png',
-  '/images/product/meta.svg',
-];
-
 function ProductDesignCardMedia() {
+  const icons = [
+    '/images/home/coinbase.png',
+    '/images/home/instagram.png',
+    '/images/home/meta.png',
+    '/images/home/dropbox.png',
+  ];
+
   return (
-    <div className="aspect-[4/3] bg-background-secondary flex items-center justify-center gap-3 sm:gap-4 px-4">
-      {PRODUCT_THUMBS.map((src) => (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          className="h-[72px] w-[72px] sm:h-20 sm:w-20 object-contain shrink-0"
-        />
-      ))}
+    <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-center justify-center">
+      <div className="grid grid-cols-2 gap-4 p-6">
+        {icons.map((src) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="h-20 w-20 object-contain"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function getFirstParagraphText(markdown = '') {
+  const paragraphs = markdown
+    .split(/\n\s*\n/g)
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  const first = paragraphs.find((p) => !p.startsWith('#')) || '';
+  return first
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, '') // images
+    .replace(/\[[^\]]*\]\([^)]+\)/g, (m) => m.replace(/\[|\]\([^)]+\)/g, '')) // links → text
+    .replace(/[`*_>#-]/g, '') // light markdown cleanup
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function NotesCardMedia() {
+  const notes = getAllNotes();
+  const newest = notes?.[0];
+  const preview = getFirstParagraphText(newest?.content || '').slice(0, 320);
+  const date = newest?.date || '';
+
+  const formattedDate = (() => {
+    if (!date) return '';
+    const parts = date.split('/');
+    const parsed =
+      parts.length === 3
+        ? new Date(Number(parts[2]), Number(parts[0]) - 1, Number(parts[1]))
+        : new Date(date);
+    if (Number.isNaN(parsed.getTime())) return date;
+    return parsed.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  })();
+
+  return (
+    <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-start p-8">
+      <div className="home-notes-stack">
+        {formattedDate ? <div className="home-notes-date">{formattedDate}</div> : null}
+        <div className="home-notes-preview text-2xl">
+          <span className="home-blink-cursor" aria-hidden="true" />
+          {preview}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StudioArtCardMedia() {
+  return (
+    <div className="home-card-media aspect-[4/3] bg-background-secondary p-5 flex items-center justify-center">
+      <img
+        src="/images/home/studio-art.png"
+        alt=""
+        className="w-5/6 h-auto object-cover rounded-[12px]"
+      />
+    </div>
+  );
+}
+
+function AboutCardMedia() {
+  return (
+    <div className="home-card-media aspect-[4/3] bg-background-secondary p-5 flex items-center justify-center">
+      <img
+        src="/images/home/about.png"
+        alt=""
+        className="size-56 object-cover rounded-full"
+      />
     </div>
   );
 }
@@ -42,22 +119,49 @@ export default function Home() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-          {sections.map((section) => (
-            <Link
-              key={section.href}
-              href={section.href}
-              className="group block rounded-lg bg-background-secondary/50 overflow-hidden transition-colors hover:bg-background-secondary"
-            >
-              {section.href === '/product-design' ? (
-                <ProductDesignCardMedia />
-              ) : (
-                <div className="aspect-[4/3] bg-background-secondary" />
-              )}
-              <div className="px-4 py-3">
-                <span className="text-base md:text-lg font-normal">{section.name}</span>
-              </div>
-            </Link>
-          ))}
+          {sections.map((section) => {
+            const tooltip =
+              section.href === '/product-design'
+                ? 'Product Design'
+                : section.href === '/studio-art'
+                  ? 'Studio Art'
+                  : section.href === '/notes'
+                    ? 'Notes'
+                    : section.href === '/about'
+                      ? 'About'
+                      : section.name;
+
+            const cardKind =
+              section.href === '/product-design'
+                ? 'home-card--product'
+                : section.href === '/notes'
+                  ? 'home-card--notes'
+                  : '';
+
+            return (
+              <HomeCardLink
+                key={section.href}
+                href={section.href}
+                tooltip={tooltip}
+                className={`home-card group block rounded-2xl overflow-hidden transition-colors bg-background-secondary ${cardKind}`}
+              >
+                {section.href === '/product-design' ? (
+                  <ProductDesignCardMedia />
+                ) : section.href === '/studio-art' ? (
+                  <StudioArtCardMedia />
+                ) : section.href === '/notes' ? (
+                  <NotesCardMedia />
+                ) : section.href === '/about' ? (
+                  <AboutCardMedia />
+                ) : (
+                  <div className="aspect-[4/3] bg-background-secondary" />
+                )}
+                {/* <div className="px-4 py-3">
+                  <span className="text-base md:text-lg font-normal">{section.name}</span>
+                </div> */}
+              </HomeCardLink>
+            );
+          })}
         </div>
       </div>
     </article>
