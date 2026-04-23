@@ -1,9 +1,11 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import CloudinaryImage from '@/components/CloudinaryImage';
 import NotesSidebar from '@/components/NotesSidebar';
+import notesImagesManifest from '@/data/notes-images-manifest.json';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -58,15 +60,18 @@ export default function NotesFeed({ posts }) {
 
   return (
     <>
-      <NotesSidebar notes={posts} activeId={activeId} />
+      <NotesSidebar notes={posts} activeId={activeId} onSelect={setActiveId} />
 
-      <div id="notes-feed" className="h-screen overflow-y-auto p-6 md:p-8 md:ml-[var(--layout-notes-content-ml)]">
+      <div
+        id="notes-feed"
+        className="h-screen overflow-y-auto p-6 pt-0 md:p-8 md:pt-0 md:ml-[var(--layout-notes-content-ml)]"
+      >
         <article>
           <div className="max-w-3xl text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
             <div className="space-y-16 md:space-y-20">
               {posts.map((post, i) => (
-                <article key={post.id} id={post.id} className="space-y-6 scroll-mt-8">
-                  <header>
+                <article key={post.id} id={post.id} className="space-y-6 scroll-mt-24">
+                  <header className="notes-post-header !mb-0 sticky top-0 z-10 pt-6 pb-6 md:pt-8 md:pb-8 bg-[linear-gradient(to_bottom,var(--color-background)_0%,var(--color-background)_72%,transparent_100%)]">
                     <h3>{post.title}</h3>
                     <time className="text-base text-text-secondary" dateTime={formatDateForDateTime(post.date)}>
                       {formatDate(post.date)}
@@ -89,7 +94,49 @@ export default function NotesFeed({ posts }) {
                   <div className="space-y-6">
                     <ReactMarkdown
                       components={{
-                        p: ({node, ...props}) => <p className="smaller" {...props} />
+                        p: ({ node, ...props }) => <p className="smaller" {...props} />,
+                        img: ({ node, src, alt, title, ...props }) => {
+                          if (!src) return null;
+
+                          const normalizedSrc =
+                            src.startsWith('images/')
+                              ? `/notes/${src}`
+                              : src.startsWith('./images/')
+                                ? `/notes/${src.replace('./', '')}`
+                                : src;
+
+                          const fileName = normalizedSrc.startsWith('/notes/images/')
+                            ? normalizedSrc.replace('/notes/images/', '')
+                            : null;
+
+                          const meta = fileName ? notesImagesManifest?.images?.[fileName] : null;
+
+                          if (meta?.width && meta?.height) {
+                            return (
+                              <figure className="w-full">
+                                <div
+                                  className="relative w-full overflow-hidden rounded"
+                                  style={{ aspectRatio: `${meta.width} / ${meta.height}` }}
+                                >
+                                  <Image
+                                    src={meta.src}
+                                    alt={alt || ''}
+                                    title={title}
+                                    fill
+                                    sizes="(min-width: 1024px) 768px, 100vw"
+                                    className="object-contain"
+                                    placeholder={meta.blurDataURL ? 'blur' : 'empty'}
+                                    blurDataURL={meta.blurDataURL}
+                                  />
+                                </div>
+                              </figure>
+                            );
+                          }
+
+                          // Fallback: still render something even if manifest isn't generated yet.
+                          // eslint-disable-next-line @next/next/no-img-element
+                          return <img src={normalizedSrc} alt={alt || ''} title={title} className="w-full h-auto rounded" {...props} />;
+                        },
                       }}
                     >
                       {post.content}

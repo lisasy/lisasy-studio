@@ -11,12 +11,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function StudioArtItemPage({ params }) {
-  const item = getItemBySlug(params.slug);
+export default async function StudioArtItemPage({ params }) {
+  const { slug } = await Promise.resolve(params);
+  const item = getItemBySlug(slug);
 
   if (!item || item.source !== 'work') {
     notFound();
   }
 
-  return <ItemPageClient item={item} slug={params.slug} basePath="/studio-art" />;
+  return <ItemPageClient item={item} slug={slug} basePath="/studio-art" />;
 }

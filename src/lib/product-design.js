@@ -4,17 +4,11 @@
  */
 
 const productGroups = [
-  {
-    year: "2026",
-    company: null,
-    projects: [
-      { name: "Dots", tag: "personal", slug: "dots" },
-    ]
-  },
+  // 2026 intentionally omitted for now (was "Dots")
   {
     year: "2025-26",
     company: "Coinbase",
-    companyDetail: "Coinbase · Staff Product Designer (IC6) on Foundations & Onchain",
+    companyDetail: "Staff Product Designer (IC6) on Foundations & Onchain",
     thumbnail: "/images/product/coinbase.png",
     projects: [
       { name: "Prime Onchain Wallet", tag: "work", slug: "prime-onchain-wallet" },
@@ -24,7 +18,7 @@ const productGroups = [
   {
     year: "2023-25",
     company: "Instagram",
-    companyDetail: "Instagram · Staff Product Designer (IC6) on Creators Team",
+    companyDetail: "Staff Product Designer (IC6) on Creators Team",
     thumbnail: "/images/home/instagram.png",
     projects: [
       { name: "Creator Bonuses", tag: "work", slug: "creator-bonuses" },
@@ -36,7 +30,7 @@ const productGroups = [
   {
     year: "2021-22",
     company: "Meta: New Product Experimentation",
-    companyDetail: "Meta · Staff Product Designer (IC6) on New Product Experimentation",
+    companyDetail: "Staff Product Designer (IC6) on New Product Experimentation",
     thumbnail: "/images/home/meta.png",
     projects: [
       { name: "Actus", tag: "work", slug: "actus" },

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { getAllNotes } from '@/lib/notes';
 import HomeCardLink from '@/components/HomeCardLink';
 
@@ -21,10 +22,12 @@ function ProductDesignCardMedia() {
     <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-center justify-center">
       <div className="grid grid-cols-2 gap-3 sm:gap-4 p-4 lg:p-6">
         {icons.map((src) => (
-          <img
+          <Image
             key={src}
             src={src}
             alt=""
+            width={80}
+            height={80}
             className="h-14 w-14 lg:h-20 lg:w-20 object-contain"
           />
         ))}
@@ -85,9 +88,11 @@ function NotesCardMedia() {
 function StudioArtCardMedia() {
   return (
     <div className="home-card-media aspect-[4/3] bg-background-secondary p-4 lg:p-5 flex items-center justify-center">
-      <img
+      <Image
         src="/images/home/studio-art.png"
         alt=""
+        width={900}
+        height={675}
         className="w-11/12 lg:w-5/6 h-auto object-cover rounded-[12px]"
       />
     </div>
@@ -97,9 +102,11 @@ function StudioArtCardMedia() {
 function AboutCardMedia() {
   return (
     <div className="home-card-media aspect-[4/3] bg-background-secondary p-4 lg:p-5 flex items-center justify-center">
-      <img
+      <Image
         src="/images/home/about.png"
         alt=""
+        width={512}
+        height={512}
         className="size-32 md:size-44 lg:size-64 object-cover rounded-full"
       />
     </div>

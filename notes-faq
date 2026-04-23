@@ -1,0 +1,64 @@
+## Notes FAQ
+
+### Where do notes live?
+- **Markdown notes** live in `src/data/notes/` as `.md` files.
+- Each file uses **frontmatter** at the top:
+
+```md
+---
+title: "my note title"
+date: "04/23/2026"      # MM/DD/YYYY
+published: true
+---
+```
+
+### How do I add images in a note?
+
+#### The rule
+- Put image files in `public/notes/images/`
+- In your note markdown, reference them like:
+
+```md
+![Alt text](images/my-photo.jpeg)
+```
+
+That `images/...` path is interpreted as `/notes/images/...` on the site.
+
+#### Best practice
+- Use meaningful filenames (or let me rename them for you).
+- Prefer `.jpeg` (photos) and `.png` (graphics), unless you’re sure you want something else.
+
+### What is the “image pipeline” and when do I run it?
+
+We have a script that:
+- **Normalizes** images (rotates correctly, clamps huge images to a sane max width, re-encodes at good quality)
+- **Generates a manifest** with each image’s width/height + a blur placeholder
+- This enables `next/image` to render images sharply and efficiently (no accidental upscaling; better performance).
+
+#### Where originals go
+- Drop new raw images into:
+  - `public/notes/images/originals/`
+
+#### Run the pipeline
+
+```bash
+npm run notes:images
+```
+
+#### What it outputs
+- Optimized images written to:
+  - `public/notes/images/` (as `.jpeg`)
+- A generated manifest written to:
+  - `src/data/notes-images-manifest.json`
+
+### Common issues
+
+#### Images don’t show up
+- **Check the filename and extension** in your markdown matches what’s in `public/notes/images/`.
+- If you just added images, run:
+  - `npm run notes:images`
+
+#### Some photos look “soft”
+- That’s usually **low source resolution** or a heavily compressed original.
+- The pipeline prevents **upscaling**, but it can’t invent detail that isn’t in the original.
+
