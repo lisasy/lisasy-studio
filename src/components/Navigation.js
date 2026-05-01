@@ -54,8 +54,14 @@ function Navigation() {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         <h3 className="text-center">
-          <Link href="/" className="transition-colors">
-            Lisa Sy
+          <Link href="/" className="transition-colors inline-flex items-center gap-2">
+            <span>Lisa Sy</span>
+            <img
+              src="/brand/site-logo.svg"
+              alt=""
+              className="h-12 w-auto shrink-0"
+              aria-hidden="true"
+            />
           </Link>
         </h3>
       </aside>
@@ -79,8 +85,17 @@ function Navigation() {
       >
         <div className="flex flex-col gap-3 text-base font-normal px-3 md:pl-6 md:pr-0">
           <h3 className="hidden md:block">
-            <Link href="/" className="px-4 hover:bg-transparent hover:text-accent-hover">
-              Lisa Sy
+            <Link
+              href="/"
+              className="px-4 hover:bg-transparent hover:text-accent-hover inline-flex items-center gap-2"
+            >
+              <span>Lisa Sy</span>  
+              <img
+                src="/brand/site-logo.svg"
+                alt=""
+                className="h-12 w-auto shrink-0"
+                aria-hidden="true"
+              />
             </Link>
           </h3>
           <ul className="flex flex-col gap-1 justify-between w-auto md:justify-start">
