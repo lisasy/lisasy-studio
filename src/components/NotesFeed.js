@@ -64,9 +64,9 @@ export default function NotesFeed({ posts }) {
 
       <div
         id="notes-feed"
-        className="h-screen overflow-y-auto p-6 pt-0 md:p-8 md:pt-0 md:ml-[var(--layout-notes-content-ml)]"
+        className="flex flex-col h-screen overflow-y-auto p-6 pt-0 md:p-8 md:pt-0 md:ml-[var(--layout-notes-content-ml)]"
       >
-        <article>
+        <article className="self-center">
           <div className="max-w-3xl text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
             <div className="space-y-16 md:space-y-20">
               {posts.map((post, i) => (
