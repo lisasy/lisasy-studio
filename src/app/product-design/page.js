@@ -35,7 +35,7 @@ function Thumbnail({ src, size = "sm", onWhite = false }) {
 function ListItem({ text, detail, type = "title", showThumbnail = true, thumbnail, thumbnailOnWhite }) {
   const isProject = type === "project";
   return (
-    <div className="flex min-h-12 items-center px-6 py-3 rounded-[10px]">
+    <div className="flex min-h-12 items-center px-0 md:px-6 py-3 rounded-[10px]">
       <div className="flex-1 min-w-0">
         <span className={`text-lg font-normal leading-[1.2] block ${isProject ? "opacity-60" : ""}`}>{text}</span>
         {detail ? <span className="text-base text-text-secondary leading-[1.2] block">{detail}</span> : null}
@@ -76,14 +76,14 @@ function ListView({ groups }) {
       {groups.map((group, i) => (
         <div key={group.year} className="flex flex-col gap-2">
           {/* Section */}
-          <div className="flex items-start w-full">
+          <div className="flex flex-col md:flex-row items-start w-full">
             {/* Year column */}
-            <div className="flex h-12 items-center py-3 shrink-0 w-[129px]">
+            <div className="flex h-12 items-center py-3 shrink-0 w-full md:w-1/4">
               <span className="text-lg leading-[1.2]">{group.year}</span>
             </div>
 
             {/* List column */}
-            <div className="flex flex-col flex-1 min-w-0">
+            <div className="flex flex-col flex-1 min-w-0 w-full md:w-3/4">
               {group.company && (
                 <ListItem
                   text={group.company}

@@ -6,7 +6,7 @@
 const productGroups = [
   // 2026 intentionally omitted for now (was "Dots")
   {
-    year: "2025-26",
+    year: "2025-2026",
     company: "Coinbase",
     companyDetail: "Staff Product Designer (IC6) on Foundations & Onchain",
     thumbnail: "/images/product/coinbase.png",
@@ -16,7 +16,7 @@ const productGroups = [
     ]
   },
   {
-    year: "2023-25",
+    year: "2023-2025",
     company: "Instagram",
     companyDetail: "Staff Product Designer (IC6) on Creators Team",
     thumbnail: "/images/home/instagram.png",
@@ -28,7 +28,7 @@ const productGroups = [
     ]
   },
   {
-    year: "2021-22",
+    year: "2021-2022",
     company: "Meta: New Product Experimentation",
     companyDetail: "Staff Product Designer (IC6) on New Product Experimentation",
     thumbnail: "/images/home/meta.png",
