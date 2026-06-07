@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { getFilteredProductGroups } from '@/lib/product-design';
+import PageSection from '@/components/PageSection';
 
 function Thumbnail({ src, size = "sm", onWhite = false }) {
   const fitClass = onWhite ? "object-contain" : "object-cover";
@@ -37,8 +38,8 @@ function ListItem({ text, detail, type = "title", showThumbnail = true, thumbnai
   return (
     <div className="flex min-h-12 items-center px-0 md:px-6 py-3 rounded-[10px]">
       <div className="flex-1 min-w-0">
-        <span className={`text-lg font-normal leading-[1.2] block ${isProject ? "opacity-60" : ""}`}>{text}</span>
-        {detail ? <span className="text-base text-text-secondary leading-[1.2] block">{detail}</span> : null}
+        <span className={`text-list block ${isProject ? "opacity-60" : ""}`}>{text}</span>
+        {detail ? <span className="text-ui text-text-secondary block">{detail}</span> : null}
       </div>
       {showThumbnail ? <Thumbnail src={thumbnail} onWhite={thumbnailOnWhite} /> : null}
     </div>
@@ -50,9 +51,9 @@ export default function ProductSoftware() {
 
   return (
     <article>
-      <div className="flex flex-col">
+      <PageSection>
         <h3>Product Design</h3>
-        <p className="smaller mt-5 mb-12">
+        <p>
           Experienced and entrepreneurial product designer with over 14 years of
           designing at-scale at Facebook, Instagram, Coinbase, Dropbox, startups,
           and agencies. My experience spans consumer-facing and B2B monetization
@@ -65,7 +66,7 @@ export default function ProductSoftware() {
         <div className="flex flex-col gap-5">
           <ListView groups={groups} />
         </div>
-      </div>
+      </PageSection>
     </article>
   );
 }
@@ -79,7 +80,7 @@ function ListView({ groups }) {
           <div className="flex flex-col md:flex-row items-start w-full">
             {/* Year column */}
             <div className="flex h-12 items-center py-3 shrink-0 w-full md:w-1/4">
-              <span className="text-lg leading-[1.2]">{group.year}</span>
+              <span className="text-list">{group.year}</span>
             </div>
 
             {/* List column */}

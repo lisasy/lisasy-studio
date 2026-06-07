@@ -13,15 +13,26 @@ Reference document for design tokens, typography, components, and spacing conven
 ### Weight Usage
 | Context | Weight | Tailwind | Value |
 |---------|--------|----------|-------|
-| Body default | Light | `font-light` | 300 |
+| Body default | Regular | `font-normal` | 400 |
+| Prose emphasis (optional) | Light | `font-light` | 300 |
 | UI chrome (nav, tabs, controls, list items) | Regular | `font-normal` | 400 |
 | Emphasis / headings | Bold | `font-bold` | 700 |
 
-### Heading Scale
-All headings use `line-height: 1.33`.
+### Breakpoints
 
-| Level | Base | md | lg | Usage |
-|-------|------|----|----|-------|
+Tailwind defaults. Global heading and body styles use the **mobile (base)** size below 768px, then step up at `md` and `lg`.
+
+| Breakpoint | Min width | Typography behavior |
+|------------|-----------|---------------------|
+| default | &lt; 768px | Base sizes — no breakpoint prefix |
+| `md` | 768px | Second step in heading/body scale |
+| `lg` | 1024px | Largest step in heading/body scale |
+
+### Heading Scale
+All headings use `line-height: 1.33` and `font-normal` (400) at every breakpoint.
+
+| Level | &lt; 768px | md (768px+) | lg (1024px+) | Usage |
+|-------|-----------|-------------|--------------|-------|
 | h1 | 30px (`text-3xl`) | 36px (`text-4xl`) | 48px (`text-5xl`) | Page hero (rare) |
 | h2 | 24px (`text-2xl`) | 30px (`text-3xl`) | 36px (`text-4xl`) | Section title |
 | h3 | 20px (`text-xl`) | 24px (`text-2xl`) | 30px (`text-3xl`) | Page title |
@@ -30,13 +41,25 @@ All headings use `line-height: 1.33`.
 | h6 | 14px (`text-sm`) | 16px (`text-base`) | 18px (`text-lg`) | Caption |
 
 ### Body Text
-| Style | Size | Weight | Line Height | Usage |
-|-------|------|--------|-------------|-------|
-| Body (global `p`) | `text-base` → `text-xl` → `text-2xl` | Light (300) | 1.45 | Long-form content, bios |
-| Body (product page) | `text-lg` (18px) | Light (300) | 1.33 | Bio paragraph |
-| Smaller (`.smaller`) | `text-base` → `text-lg` → `text-xl` | Light (300) | 1.45 | TwoColumn content |
-| UI / Controls | `text-base` (16px) | Regular (400) | 1.2 | Tabs, nav, item count |
-| List items | `text-lg` (18px) | Regular (400) | 1.2 | Product list rows |
+
+Four semantic roles. Prose uses line-height **1.45**; UI/list uses **1.2**.
+
+| Style | &lt; 768px | md (768px+) | lg (1024px+) | Weight | Line Height | Usage |
+|-------|-----------|-------------|--------------|--------|-------------|-------|
+| Body (global `p`) | 16px (`text-base`) | 18px (`text-lg`) | 20px (`text-xl`) | Regular (400) | 1.45 | Default body, TwoColumn content |
+| Lead (`.lead`) | 16px (`text-base`) | 20px (`text-xl`) | 24px (`text-2xl`) | Regular (400) | 1.45 | Page intros, lead paragraphs |
+| List (`.text-list`) | 16px (`text-base`) | 18px (`text-lg`) | 18px (`text-lg`) | Regular (400) | 1.2 | Product list rows, sidebar titles |
+| UI (`.text-ui`) | 16px (`text-base`) | 16px (fixed) | 16px (fixed) | Regular (400) | 1.2 | Nav, tabs, metadata |
+
+### Layout
+- **`PageSection`** — spacing-only wrapper (`gap-4 md:gap-7`). Optional `narrow` prop for `max-w-3xl`. No typography classes.
+
+### Visual hierarchy at each breakpoint
+```
+lg:  h3 (30px) > .lead (24px) > p (20px) ≥ .text-list (18px) > .text-ui (16px)
+md:  h3 (24px) > .lead (20px) > p (18px) = .text-list (18px) > .text-ui (16px)
+mob: h3 (20px) > .lead (16px) = p (16px) = .text-list (16px) > .text-ui (16px)
+```
 
 ---
 
@@ -112,7 +135,7 @@ All headings use `line-height: 1.33`.
 
 ### Navigation (`Navigation.js`)
 - Fixed left sidebar on desktop, slide-out drawer on mobile
-- Font: `text-base font-normal` (16px, Regular 400)
+- Font: `.text-ui` (16px fixed, Regular 400)
 - Active state: `bg-background-secondary` (`#dfddd2`)
 - Hover: `hover:bg-background-secondary`
 - Link padding: `py-1 px-4`
@@ -120,7 +143,7 @@ All headings use `line-height: 1.33`.
 
 ### Segmented Control (tabs on `/product-design`)
 - Pill-shaped buttons: `h-8 px-4 py-1 rounded-[10px]` (32px height)
-- Font: `text-base font-normal` (16px, Regular 400)
+- Font: `.text-ui` (16px fixed, Regular 400)
 - Active: `bg-foreground text-background` (black fill, white text)
 - Inactive: `bg-background-secondary text-foreground`
 - Hover (inactive): `hover:bg-background-secondary-hover`
@@ -134,7 +157,7 @@ All headings use `line-height: 1.33`.
 ### ListItem (`/product-design` page)
 - Row height: `h-12` (48px)
 - Padding: `px-6 py-3`
-- Font: `text-lg font-normal` (18px, Regular 400)
+- Font: `.text-list` (16px → 18px at md+, Regular 400)
 - Title type: full opacity
 - Project type: `opacity-60`
 - Hover: `hover:bg-background-secondary-hover rounded-[10px]`

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import CloudinaryImage from '@/components/CloudinaryImage';
 import NotesSidebar from '@/components/NotesSidebar';
+import PageSection from '@/components/PageSection';
 import notesImagesManifest from '@/data/notes-images-manifest.json';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -67,13 +68,13 @@ export default function NotesFeed({ posts }) {
         className="flex flex-col h-screen overflow-y-auto p-6 pt-0 md:p-8 md:pt-0 md:ml-[var(--layout-notes-content-ml)]"
       >
         <article className="self-center">
-          <div className="max-w-3xl text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
+          <PageSection narrow>
             <div className="space-y-16 md:space-y-20">
               {posts.map((post, i) => (
                 <article key={post.id} id={post.id} className="space-y-6 scroll-mt-24">
                   <header className="notes-post-header !mb-0 sticky top-0 z-10 pt-6 pb-6 md:pt-8 md:pb-8 bg-[linear-gradient(to_bottom,var(--color-background)_0%,var(--color-background)_72%,transparent_100%)]">
                     <h3>{post.title}</h3>
-                    <time className="text-base text-text-secondary" dateTime={formatDateForDateTime(post.date)}>
+                    <time className="text-ui text-text-secondary" dateTime={formatDateForDateTime(post.date)}>
                       {formatDate(post.date)}
                     </time>
                   </header>
@@ -94,7 +95,7 @@ export default function NotesFeed({ posts }) {
                   <div className="space-y-6">
                     <ReactMarkdown
                       components={{
-                        p: ({ node, ...props }) => <p className="smaller" {...props} />,
+                        p: ({ node, ...props }) => <p {...props} />,
                         img: ({ node, src, alt, title, ...props }) => {
                           if (!src) return null;
 
@@ -149,7 +150,7 @@ export default function NotesFeed({ posts }) {
                 </article>
               ))}
             </div>
-          </div>
+          </PageSection>
         </article>
       </div>
     </>

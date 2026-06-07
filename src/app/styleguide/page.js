@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import TwoColumn from '@/components/TwoColumn';
+import PageSection from '@/components/PageSection';
 import { List, LayoutGrid } from 'lucide-react';
 
 function Swatch({ color, name, token, className = "" }) {
@@ -39,6 +40,63 @@ function SpecRow({ label, value, description }) {
   );
 }
 
+const TYPE_SCALE = [
+  { style: "h1", mobile: "30px · text-3xl", md: "36px · text-4xl", lg: "48px · text-5xl", weight: "Regular (400)", lineHeight: "1.33", usage: "Page hero (rare)" },
+  { style: "h2", mobile: "24px · text-2xl", md: "30px · text-3xl", lg: "36px · text-4xl", weight: "Regular (400)", lineHeight: "1.33", usage: "Section title" },
+  { style: "h3", mobile: "20px · text-xl", md: "24px · text-2xl", lg: "30px · text-3xl", weight: "Regular (400)", lineHeight: "1.33", usage: "Page title" },
+  { style: "h4", mobile: "18px · text-lg", md: "20px · text-xl", lg: "24px · text-2xl", weight: "Regular (400)", lineHeight: "1.33", usage: "Subsection" },
+  { style: "h5", mobile: "16px · text-base", md: "18px · text-lg", lg: "20px · text-xl", weight: "Regular (400)", lineHeight: "1.33", usage: "TwoColumn labels" },
+  { style: "h6", mobile: "14px · text-sm", md: "16px · text-base", lg: "18px · text-lg", weight: "Regular (400)", lineHeight: "1.33", usage: "Captions" },
+  { style: "p", mobile: "16px · text-base", md: "18px · text-lg", lg: "20px · text-xl", weight: "Regular (400)", lineHeight: "1.45", usage: "Default body, TwoColumn" },
+  { style: ".lead", mobile: "16px · text-base", md: "20px · text-xl", lg: "24px · text-2xl", weight: "Regular (400)", lineHeight: "1.45", usage: "Page intros, lead paragraphs" },
+  { style: ".text-list", mobile: "16px · text-base", md: "18px · text-lg", lg: "18px · text-lg", weight: "Regular (400)", lineHeight: "1.2", usage: "Product list rows, sidebar titles" },
+  { style: ".text-ui", mobile: "16px · text-base", md: "16px · text-base", lg: "16px · text-base", weight: "Regular (400)", lineHeight: "1.2", usage: "Nav, tabs, metadata" },
+];
+
+function TypeScaleTable() {
+  return (
+    <div className="overflow-x-auto -mx-1 px-1">
+      <table className="w-full min-w-[42rem] text-sm border-collapse">
+        <thead>
+          <tr className="text-left text-xs text-text-secondary border-b border-foreground/10">
+            <th className="py-2 pr-4 font-normal">Style</th>
+            <th className="py-2 pr-4 font-normal">&lt; 768px</th>
+            <th className="py-2 pr-4 font-normal">md · 768px+</th>
+            <th className="py-2 pr-4 font-normal">lg · 1024px+</th>
+            <th className="py-2 pr-4 font-normal">Weight</th>
+            <th className="py-2 pr-4 font-normal">LH</th>
+            <th className="py-2 font-normal">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {TYPE_SCALE.map((row) => (
+            <tr key={row.style} className="border-b border-foreground/5 align-top">
+              <td className="py-2.5 pr-4 font-normal">
+                <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">{row.style}</code>
+              </td>
+              <td className="py-2.5 pr-4 text-text-secondary">{row.mobile}</td>
+              <td className="py-2.5 pr-4 text-text-secondary">{row.md}</td>
+              <td className="py-2.5 pr-4 text-text-secondary">{row.lg}</td>
+              <td className="py-2.5 pr-4 text-text-secondary">{row.weight}</td>
+              <td className="py-2.5 pr-4 text-text-secondary">{row.lineHeight}</td>
+              <td className="py-2.5 text-text-secondary">{row.usage}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function TypeSample({ label, spec, children }) {
+  return (
+    <div>
+      {children}
+      <span className="text-xs text-text-secondary block mt-1">{label} · {spec}</span>
+    </div>
+  );
+}
+
 export default function Styleguide() {
   const [demoTab, setDemoTab] = useState("all");
   const [demoView, setDemoView] = useState("list");
@@ -58,6 +116,23 @@ export default function Styleguide() {
             <span className="text-xs text-text-secondary">Weights: Light (300), Regular (400), Bold (700)</span>
           </div>
 
+          <div className="flex flex-col gap-2 mb-6">
+            <span className="text-sm font-normal text-text-secondary">Breakpoints</span>
+            <p className="!mb-0 text-sm text-text-secondary leading-[1.45]">
+              Four semantic roles — <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">p</code>, <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">.lead</code>, <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">.text-list</code>, <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">.text-ui</code> — scale at <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">md</code> (768px) and <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">lg</code> (1024px) where noted. Page layout uses <code className="text-xs bg-background-secondary px-1.5 py-0.5 rounded font-mono">PageSection</code> for spacing only.
+            </p>
+            <div className="flex flex-col">
+              <SpecRow label="Mobile (default)" value="&lt; 768px" description="Base sizes — no breakpoint prefix" />
+              <SpecRow label="md" value="768px+" description="Second step in heading/body scale" />
+              <SpecRow label="lg" value="1024px+" description="Largest step in heading/body scale" />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 mb-6">
+            <span className="text-sm font-normal text-text-secondary">Responsive Type Scale</span>
+            <TypeScaleTable />
+          </div>
+
           <div className="flex flex-col gap-3 mb-4">
             <span className="text-sm font-normal text-text-secondary">Font Weights</span>
             <div>
@@ -72,48 +147,40 @@ export default function Styleguide() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <div>
+            <TypeSample label="h1" spec="30px → 36px → 48px · line-height 1.33">
               <h1>Heading 1</h1>
-              <span className="text-xs text-text-secondary">h1 · 30/36/48px · line-height 1.33</span>
-            </div>
-            <div>
+            </TypeSample>
+            <TypeSample label="h2" spec="24px → 30px → 36px · line-height 1.33">
               <h2>Heading 2</h2>
-              <span className="text-xs text-text-secondary">h2 · 24/30/36px · line-height 1.33</span>
-            </div>
-            <div>
+            </TypeSample>
+            <TypeSample label="h3" spec="20px → 24px → 30px · line-height 1.33 · Page titles">
               <h3>Heading 3</h3>
-              <span className="text-xs text-text-secondary">h3 · 20/24/30px · line-height 1.33 · Page titles</span>
-            </div>
-            <div>
+            </TypeSample>
+            <TypeSample label="h4" spec="18px → 20px → 24px · line-height 1.33">
               <h4>Heading 4</h4>
-              <span className="text-xs text-text-secondary">h4 · 18/20/24px · line-height 1.33</span>
-            </div>
-            <div>
+            </TypeSample>
+            <TypeSample label="h5" spec="16px → 18px → 20px · line-height 1.33 · TwoColumn labels">
               <h5>Heading 5</h5>
-              <span className="text-xs text-text-secondary">h5 · 16/18/20px · line-height 1.33 · TwoColumn labels</span>
-            </div>
-            <div>
+            </TypeSample>
+            <TypeSample label="h6" spec="14px → 16px → 18px · line-height 1.33 · Captions">
               <h6>Heading 6</h6>
-              <span className="text-xs text-text-secondary">h6 · 14/16/18px · line-height 1.33 · Captions</span>
-            </div>
+            </TypeSample>
 
             <div className="h-px bg-foreground/10" />
 
-            <div>
+            <TypeSample label="p" spec="16px → 18px → 20px · font-normal (400) · line-height 1.45">
               <p>Body text — GT America Light at the base responsive scale. Used for bios, long-form content, and descriptions across the site.</p>
-              <span className="text-xs text-text-secondary">p · base/xl/2xl · font-light (300) · line-height 1.45</span>
+            </TypeSample>
+            <TypeSample label=".lead" spec="16px → 20px → 24px · font-normal (400) · line-height 1.45">
+              <p className="lead">Lead text — page intros and opening paragraphs that need more presence than body copy.</p>
+            </TypeSample>
+            <div>
+              <span className="text-list block mb-1">List item text — scales with body at md</span>
+              <span className="text-xs text-text-secondary">.text-list · 16px → 18px → 18px · line-height 1.2 · Product list rows, sidebar</span>
             </div>
             <div>
-              <p className="smaller">Smaller body — used inside TwoColumn sections on the About page and for secondary content.</p>
-              <span className="text-xs text-text-secondary">.smaller · base/lg/xl · font-light (300) · line-height 1.45</span>
-            </div>
-            <div>
-              <span className="text-lg font-normal leading-[1.2] block mb-1">List item text — Regular weight at 18px</span>
-              <span className="text-xs text-text-secondary">text-lg font-normal · 18px · line-height 1.2 · Product list rows</span>
-            </div>
-            <div>
-              <span className="text-base font-normal leading-[1.2] block mb-1">UI chrome text — Regular weight at 16px</span>
-              <span className="text-xs text-text-secondary">text-base font-normal · 16px · line-height 1.2 · Tabs, nav, item count</span>
+              <span className="text-ui block mb-1">UI chrome text — fixed at 16px</span>
+              <span className="text-xs text-text-secondary">.text-ui · 16px at all breakpoints · line-height 1.2 · Tabs, nav, metadata</span>
             </div>
           </div>
         </section>
@@ -214,7 +281,7 @@ export default function Styleguide() {
                 <button
                   key={label}
                   onClick={() => setDemoTab(label.toLowerCase())}
-                  className={`flex items-center justify-center h-8 px-4 py-1 rounded-[10px] text-base font-normal leading-[1.2] transition-colors cursor-pointer ${
+                  className={`flex items-center justify-center h-8 px-4 py-1 rounded-[10px] text-ui transition-colors cursor-pointer ${
                     demoTab === label.toLowerCase()
                       ? "bg-foreground text-background"
                       : "bg-background-secondary text-foreground hover:bg-background-secondary-hover"
@@ -224,7 +291,7 @@ export default function Styleguide() {
                 </button>
               ))}
             </div>
-            <span className="text-xs text-text-secondary">text-base font-normal · h-8 px-4 py-1 rounded-[10px] (32px) · Active: bg-foreground text-background · Inactive: bg-background-secondary</span>
+            <span className="text-xs text-text-secondary">.text-ui · h-8 px-4 py-1 rounded-[10px] (32px) · Active: bg-foreground text-background · Inactive: bg-background-secondary</span>
           </div>
 
           {/* View Toggle */}
@@ -260,18 +327,18 @@ export default function Styleguide() {
             <span className="text-sm font-normal">List Item</span>
             <div className="flex flex-col max-w-xl">
               <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-background-hover cursor-pointer">
-                <span className="flex-1 text-lg font-normal leading-[1.2]">
+                <span className="flex-1 text-list">
                   <span className="group-hover:hidden">Company Title</span>
                   <span className="hidden group-hover:inline">Company · Role detail on hover</span>
                 </span>
                 <div className="size-10 rounded-[9px] bg-[#d9d9d9] flex-shrink-0" />
               </div>
               <div className="group flex h-12 items-center px-6 py-3 rounded-[10px] transition-colors hover:bg-background-hover cursor-pointer">
-                <span className="flex-1 text-lg font-normal leading-[1.2] opacity-60">Project Name</span>
+                <span className="flex-1 text-list opacity-60">Project Name</span>
                 <div className="size-10 rounded-[9px] bg-[#d9d9d9] flex-shrink-0" />
               </div>
             </div>
-            <span className="text-xs text-text-secondary">h-12 px-6 py-3 · Title: full opacity · Project: opacity-60 · Hover: bg-background-hover rounded-[10px]</span>
+            <span className="text-xs text-text-secondary">h-12 px-6 py-3 · .text-list · Title: full opacity · Project: opacity-60 · Hover: bg-background-hover rounded-[10px]</span>
           </div>
 
           {/* Thumbnail */}
@@ -289,11 +356,21 @@ export default function Styleguide() {
             </div>
           </div>
 
+          {/* PageSection */}
+          <div className="flex flex-col gap-3">
+            <span className="text-sm font-normal">PageSection Layout</span>
+            <PageSection>
+              <h5 className="mb-0">Section Title</h5>
+              <p className="!mb-0">Spacing-only wrapper — gap-4 md:gap-7, no typography. Pass narrow for max-w-3xl content.</p>
+            </PageSection>
+            <span className="text-xs text-text-secondary">flex flex-col gap-4 md:gap-7 · optional narrow (max-w-3xl)</span>
+          </div>
+
           {/* TwoColumn */}
           <div className="flex flex-col gap-3">
             <span className="text-sm font-normal">TwoColumn Layout</span>
             <TwoColumn title="Section Title">
-              <p className="smaller">
+              <p>
                 Content spans two columns on desktop. Used on the About page for structured sections like Artist Statement, Education, and Contact.
               </p>
             </TwoColumn>
@@ -307,7 +384,7 @@ export default function Styleguide() {
               <div className="rounded-lg border border-foreground/10 bg-background-secondary/50 overflow-hidden transition-colors hover:bg-background-secondary cursor-pointer">
                 <div className="aspect-[4/3] bg-background-secondary" />
                 <div className="px-4 py-3">
-                  <span className="text-base font-normal">Section Name</span>
+                  <span className="text-ui">Section Name</span>
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@ export default function ItemPageClient({ item, slug, basePath }) {
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
           <button
             onClick={handleBack}
-            className="flex items-center gap-2 text-base md:text-lg hover:text-accent-hover transition-colors"
+            className="flex items-center gap-2 text-list hover:text-accent-hover transition-colors"
             aria-label="Go back"
           >
             <X size={24} />

@@ -66,7 +66,7 @@ export default function NotesSidebar({ notes, activeId, onSelect }) {
           >
             <span
               data-note-title
-              className="text-base font-normal leading-[1.3] block truncate"
+              className="text-list block truncate"
               title={note.title}
             >
               {note.title}

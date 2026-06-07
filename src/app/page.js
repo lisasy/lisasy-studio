@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { getAllNotes } from '@/lib/notes';
 import HomeCardLink from '@/components/HomeCardLink';
+import PageSection from '@/components/PageSection';
 
 const sections = [
   { name: "Product / Software", href: "/product-design" },
@@ -76,10 +77,10 @@ function NotesCardMedia() {
     <div className="home-card-media aspect-[4/3] bg-background-secondary flex items-start p-5 lg:p-8">
       <div className="home-notes-stack flex min-h-0 w-full flex-col">
         {formattedDate ? <div className="home-notes-date">{formattedDate}</div> : null}
-        <div className="home-notes-preview text-lg lg:text-2xl">
+        <p className="home-notes-preview !mb-0">
           <span className="home-blink-cursor" aria-hidden="true" />
           {preview}
-        </div>
+        </p>
       </div>
     </div>
   );
@@ -116,16 +117,17 @@ function AboutCardMedia() {
 export default function Home() {
   return (
     <article>
-      <div className="text-left text-lg md:text-xl lg:text-2xl leading-[1.33] gap-4 md:gap-7">
-        <h3>
+      <PageSection>
+        <h1 className="sr-only">Lisa Sy</h1>
+        <p className="lead">
           Hello, I&apos;m Lisa and I&apos;m a multi-disciplinary product &amp; software designer,
           artist, and illustrator based in Los Angeles, CA. Here is my place on the
           internet where I share my product/software work across 14 years
           working in tech, my studio art practice, and my curious notes about
           design, art, creativity, exploration, and nurturing a well-lived life.
-        </h3>
+        </p>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-8">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {sections.map((section) => {
             const tooltip =
               section.href === '/product-design'
@@ -170,7 +172,7 @@ export default function Home() {
             );
           })}
         </div>
-      </div>
+      </PageSection>
     </article>
   );
 }

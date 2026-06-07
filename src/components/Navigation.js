@@ -83,7 +83,7 @@ function Navigation() {
         }`}
         style={{ width: NAV_WIDTH }}
       >
-        <div className="flex flex-col gap-3 text-base font-normal px-3 md:pl-6 md:pr-0">
+        <div className="flex flex-col gap-3 text-ui px-3 md:pl-6 md:pr-0">
           <h3 className="hidden md:block">
             <Link
               href="/"

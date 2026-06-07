@@ -41,7 +41,7 @@
 body {
   color: var(--color-foreground);
   font-family: var(--font-family-gt-america);
-  font-weight: 300;
+  font-weight: 400;
   background: var(--color-background);
 }
 
@@ -138,14 +138,22 @@ a {
   }
 
   p {
-    @apply font-light sm:font-normal text-base md:text-xl lg:text-2xl;
+    @apply font-normal text-base md:text-lg lg:text-xl;
     line-height: 1.45;
     margin-bottom: 1rem;
   }
 
-  .smaller {
-    @apply font-light text-base md:text-lg lg:text-xl;
+  .lead {
+    @apply font-normal text-base md:text-xl lg:text-2xl;
     line-height: 1.45;
+  }
+
+  .text-ui {
+    @apply font-normal text-base leading-[1.2];
+  }
+
+  .text-list {
+    @apply font-normal text-base md:text-lg leading-[1.2];
   }
 }
 
