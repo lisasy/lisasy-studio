@@ -3,7 +3,6 @@
 export const NAV_WIDTH = 'var(--layout-nav-width)';
 export const NOTES_SIDEBAR_WIDTH = 'var(--layout-notes-sidebar-width)';
 export const MAIN_CONTENT_ML = 'var(--layout-main-ml)';
-export const NOTES_CONTENT_ML = 'var(--layout-notes-content-ml)';
 
 export const MOBILE_HEADER_HEIGHT = '3.5rem';
 

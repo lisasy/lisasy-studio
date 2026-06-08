@@ -27,7 +27,6 @@
   --layout-nav-width: 14rem;
   --layout-notes-sidebar-width: 17rem;
   --layout-main-ml: 16rem;
-  --layout-notes-content-ml: 31rem;  /* nav + notes sidebar */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -354,4 +353,80 @@ body.item-page main {
   100% {
     opacity: 0;
   }
+}
+
+/* Notes — hover-reveal article list (portaled to body) */
+.notes-menu-shell {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: var(--layout-nav-width);
+  width: var(--layout-notes-sidebar-width);
+  z-index: 55;
+  pointer-events: none;
+}
+
+/* Closed: only the icon catches hover. Open: full panel stays interactive. */
+.notes-menu-shell.is-open {
+  pointer-events: auto;
+}
+
+.notes-menu-trigger {
+  position: absolute;
+  z-index: 2;
+  top: 2rem;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--color-foreground);
+  opacity: 0.55;
+  background: transparent;
+  border: 0;
+  cursor: default;
+  transition: opacity 280ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.notes-menu-trigger--desktop {
+  pointer-events: auto;
+  cursor: default;
+}
+
+.notes-menu-shell.is-open .notes-menu-trigger--desktop {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.notes-menu-shell:not(.is-open) .notes-menu-trigger--desktop:hover {
+  opacity: 1;
+}
+
+.notes-menu-trigger--desktop::before {
+  content: '';
+  position: absolute;
+  inset: -1rem;
+}
+
+/* Anchored to right edge of main nav; slides left when closed (hidden under nav) */
+.notes-menu-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: transform 280ms cubic-bezier(0.33, 1, 0.68, 1);
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.notes-menu-shell.is-open .notes-menu-panel {
+  transform: translateX(0);
+  z-index: 1;
+  pointer-events: auto;
 }

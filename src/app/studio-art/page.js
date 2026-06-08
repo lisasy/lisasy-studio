@@ -8,7 +8,7 @@ export default function StudioArt() {
 
   return (
     <article>
-      <PageSection className="">
+      <PageSection>
         <h3>Studio Art</h3>
         <p>
           I&apos;m an artist, painter, illustrator, and writer based in Los Angeles, CA. My work is inspired by the natural world and our relationship to it. Working in plein air, I often paint and draw natural and built urban landscapes, ranging from desert and mountainscapes, to bustling city plazas replete with people. Through my art, I strive to capture and amplify the beauty of these often overlooked and under-appreciated moments by pointing attention to them. I hope my art invites you to pause, reflect, and find wonder in the seemingly ordinary.
